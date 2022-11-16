@@ -14,15 +14,15 @@ export default function App() {
     const [infoList, setInfoList] = useState([])
 
     // ограничение на максимальное количество показываемых астероидов
-    const [MaxAsteroidsNumber, setMaxAsteroidsNumber] = useState(8)
+    const [MaxAsteroidsNumber, setMaxAsteroidsNumber] = useState(10)
 
     // получение данных 
     const [fetchInfo, fetchError] = useFetching( async () => {
-        
+    
         let response = await GetService.getInfo(setSourceRef, setUpdateDate);
-
-        // слайс необходимого количества элементов
         let slicedArray = [], finalArray = []
+        
+        // слайс необходимого количества элементов
         if(response.length > MaxAsteroidsNumber) {
             slicedArray = response.slice(0, MaxAsteroidsNumber)
         } else {
@@ -43,16 +43,16 @@ export default function App() {
     }, [])
 
     // ссылка на контейнер с системой астероидов
-    const marginWrapper = useRef(null)
+    const marginWrapper = useRef()
 
     // ссылка на объект NASA
     const [sourceRef, setSourceRef] = useState(null)
 
-    // наблюдатель за изменением состояния ссылки на контейнер
+    // наблюдатель за изменением состояния полученных данных
     useEffect( () => {
         //console.log(marginWrapper.current.children)
-        positioning(marginWrapper)
-    }, [marginWrapper, infoList])
+        positioning(marginWrapper, MaxAsteroidsNumber)
+    }, [infoList])
 
     // состояние выбранного астероида для вывода информации о нём
     const [selectedAsteroid, setSelectedAsteroid] = useState(null)
@@ -61,9 +61,9 @@ export default function App() {
     const [updateDate, setUpdateDate] = useState(null)
 
     return (
-        <React.Fragment>
+        <>
             <Header />
-            <Navbar />
+            <Navbar sourceRef={sourceRef} />
             <Main
                 refProp={marginWrapper}
                 infoList={infoList}
@@ -72,6 +72,6 @@ export default function App() {
                 sourceRef={sourceRef}
             />
             <Footer date={updateDate} />
-        </React.Fragment>
+        </>
     );
 }

@@ -2,6 +2,11 @@ import React from 'react';
 import MiniInfoBlock from '../../min info block/MinInfoBlock';
 
 const MapWrapper = ({infoList, refProp, selected, asteroidInfo}) => {
+
+    function round(number) {
+        return Number(number).toFixed(5);
+    }
+
     return (
         <section className="map-wrapper">
             <div ref={refProp} className="margin-wrapper">
@@ -32,7 +37,7 @@ const MapWrapper = ({infoList, refProp, selected, asteroidInfo}) => {
                         </MiniInfoBlock>
 
                         <MiniInfoBlock id="diameter" textTitle="DIAMETER SIZES:">
-                            <p>{asteroidInfo.estimated_diameter.meters.estimated_diameter_min} - {asteroidInfo.estimated_diameter.meters.estimated_diameter_max} METERS</p>
+                            <p>{round(asteroidInfo.estimated_diameter.kilometers.estimated_diameter_min)} - {round(asteroidInfo.estimated_diameter.kilometers.estimated_diameter_max)} KILOMETERS</p>
                         </MiniInfoBlock>
 
                         <MiniInfoBlock  id="close-a-date" textTitle="CLOSE APPROACH DATE:">
@@ -40,11 +45,11 @@ const MapWrapper = ({infoList, refProp, selected, asteroidInfo}) => {
                         </MiniInfoBlock>
 
                         <MiniInfoBlock textTitle="MISS DISTANCE:">
-                            <p>{asteroidInfo.close_approach_data[0].miss_distance.kilometers} KILOMETERS</p>
+                            <p>{round(asteroidInfo.close_approach_data[0].miss_distance.kilometers)} KILOMETERS</p>
                         </MiniInfoBlock>
 
                         <MiniInfoBlock id="velocity" textTitle="RELATIVE VELOCITY:">
-                            <p>{asteroidInfo.close_approach_data[0].relative_velocity.kilometers_per_hour} KM / HOUR</p>
+                            <p>{round(asteroidInfo.close_approach_data[0].relative_velocity.kilometers_per_hour)} KM / HOUR</p>
                         </MiniInfoBlock>
 
                         <MiniInfoBlock id="hazardous" textTitle="POTENTIALLY HAZARDOUS:">

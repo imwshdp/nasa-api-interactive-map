@@ -19,7 +19,11 @@ export default class GetService {
 
         const response = await axios.get(`https://api.nasa.gov/neo/rest/v1/feed?start_date=${date}&end_date=${date}&api_key=${keyAPI}`)
         callback(`https://api.nasa.gov/neo/rest/v1/feed?start_date=${date}&end_date=${date}&api_key=${keyAPI}`)
-        
-        return response.data.near_earth_objects[date]
+
+        // сортировка по расстоянию промаха
+        let itemsArray = [...response.data.near_earth_objects[date]]
+        itemsArray.sort((a, b) => Number(a.close_approach_data[0].miss_distance.kilometers) > Number(b.close_approach_data[0].miss_distance.kilometers) ? 1 : -1);
+
+        return itemsArray
     }
 }

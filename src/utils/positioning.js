@@ -1,8 +1,8 @@
-export const positioning = (marginWrapper) => {
+export const positioning = (marginWrapper, circlesNumber) => {
 
     let circleIncreasing = 100, positionsArray = [0, 0.75, 0.83, 0.916];
 
-	let counter = 0, circlesNumber = 4, asteroid;
+	let counter = 0, asteroid;
 	var newSize, newMargin, corX, corY, coordsArray, curAngle, shift;
 
     const regex = new RegExp('arc')
@@ -11,7 +11,7 @@ export const positioning = (marginWrapper) => {
     for(let arc of collection.children) {
             
         if(regex.test(arc.className) && counter < circlesNumber) {
-                
+            
             if(counter === 0) shift = arc.offsetLeft;
 
             newSize = arc.offsetHeight + counter * circleIncreasing;

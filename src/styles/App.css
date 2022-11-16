@@ -12,17 +12,18 @@ a {
 :root {
     --MainFont: 'Montserrat', sans-serif;
 	--SvgColor: #666666;
-	--HeaderBG: #FFFFFF;
-	--MainBG: 	#f5f5f5;
+	--WhiteBG: #FFFFFF;
+	--MainBG: 	#f0f0f0;
 	--AsignBG: 	#D9D9D9;
 	--SourceBG: #D7C4C4;
-    --NavBarColor: #FF9973;
-    --navBarButtonBG: linear-gradient(203.53deg, rgb(41, 39, 39) 9.19%, #2E202E 85.54%);
+    --SpaceBG: linear-gradient(203.53deg, rgb(41, 39, 39) 9.19%, #2E202E 85.54%);
+    --SpaceTrBG: linear-gradient(203.53deg, rgba(41, 39, 39, 0.3) 5%, #2E202E 85.54%);
 }
 
 html, body {
     height: 100%;
     width: 100%;
+    min-height: 640px;
 }
 
 #root {
@@ -36,36 +37,48 @@ html, body {
     font-weight: 600;
 }
 
-.App {
-    width: 100%;
-    height: 100%;
-}
-
 header {
     display: flex;
     width: 100%;
-    height: 10%; /*EX*/
-    background: var(--HeaderBG);
+    height: 10%;
+    justify-content: center;
+    background: var(--WhiteBG);
+}
+
+header > .nasa-logo {
+    width: 20%;
+    height: auto;
+    background: center / contain no-repeat url(./../resources/svg/nasa-logo.svg);
 }
 
 main {
     display: flex;
     flex-flow: column nowrap;
-    flex: 1 0 auto;
     width: 100%;
+    height: 90%;
     background: var(--MainBG);
 }
 
-h1 {
+.title {
+    display: flex;
+    flex-flow: row nowrap;
+    width: 95%;
+    height: 5%;
+    align-items: flex-end;
+}
+
+.title > h1 {
     font-size: 1.5vw;
     text-indent: 5%;
+    white-space: nowrap;
+    margin-left: calc(5%/3);
 }
 
 .astro-section {
     display: flex;
     flex-flow: row nowrap;
     width: 100%;
-    height: 100%;
+    height: 90%;
     justify-content: space-around;
     align-items: center;
 }
@@ -74,7 +87,7 @@ h1 {
     display: flex;
     width: 50%;
     height: 90%;
-    background: black;
+    background-image: var(--SpaceTrBG), url(./../resources/pictures/starsBG.png);
     align-self: center;
     position: relative;
     border: 1px solid var(--SvgColor);
@@ -85,7 +98,7 @@ h1 {
 .earth {
     min-width: 100px;
     height: 100px;
-    background: url(./svg/earth.svg);
+    background: url(./../resources/svg/earth.svg);
     background-repeat: no-repeat;
     background-size: contain;
 }
@@ -105,7 +118,7 @@ h1 {
     width: 3rem;
     height: 3rem;
     background: center / contain no-repeat;
-    background-image: url(./svg/asteroid.svg);
+    background-image: url(./../resources/svg/asteroid.svg);
     position: absolute;
     rotate: 90deg;
     border: none;
@@ -121,8 +134,9 @@ h1 {
 .margin-wrapper {
     height: auto; 
     width: 100%;
-    margin: 3%;
+    margin: 10%;
     position: relative;
+    transform: scale(1.15);
 }
 
 .margin-wrapper > * {
@@ -155,6 +169,7 @@ h1 {
 
 .asteroid-info p {
     color: var(--SvgColor);
+    font-size: 1vw;
 }
 
 .info-block {
@@ -183,12 +198,12 @@ h1 {
     background: center / contain no-repeat;
 }
 
-#name { background-image: url(./svg/black-icons/name.svg); }
-#diameter { background-image: url(./svg/black-icons/diameter.svg); }
-#close-a-date { background-image: url(./svg/black-icons/close-a-date.svg); }
-#velocity { background-image: url(./svg/black-icons/velocity.svg); }
-#velocity { background-image: url(./svg/black-icons/velocity.svg); }
-#hazardous { background-image: url(./svg/black-icons/hazardous.svg); }
+#name { background-image: url(./../resources/svg/black-icons/name.svg); }
+#diameter { background-image: url(./../resources/svg/black-icons/diameter.svg); }
+#close-a-date { background-image: url(./../resources/svg/black-icons/close-a-date.svg); }
+#velocity { background-image: url(./../resources/svg/black-icons/velocity.svg); }
+#velocity { background-image: url(./../resources/svg/black-icons/velocity.svg); }
+#hazardous { background-image: url(./../resources/svg/black-icons/hazardous.svg); }
 
 nav {
     display: none;
@@ -198,18 +213,23 @@ footer {
     display: none;
 }
 
-
+.modal {
+    display: none;
+}
 
 @media (max-width: 800px) {
     
-    header {
+    .title {
+        width: 90%;
         height: 5%;
+        margin-left: 5%;
+        align-items: flex-end;
     }
 
     nav {
+        display: flex;
         width: 100%;
         max-height: 80px;
-        display: flex;
         align-self: center;
         justify-content: center;
         align-items: center;
@@ -219,16 +239,19 @@ footer {
     .NavButton {
         display: flex;
         width: 25%;
-        max-height: 50px;
-        background: var(--navBarButtonBG);
-        padding: 2% 1% 2% 1%;
+        height: 50px;
+        background: var(--SpaceBG);
         justify-content: center;
         align-items: center;
-        color: var(--NavBarColor);
         border: 1px solid var(--SvgColor);
         border-radius: 15px;
         cursor: pointer;
+    }
+
+    .NavButton > * {
+        color: var(--AsignBG);
         font-family: var(--MainFont);
+        font-size: 2vw;
         font-weight: 600;
     }
 
@@ -236,17 +259,18 @@ footer {
         margin-right: 5%;
     }
 
-    h1 {
+    .title > h1 {
         font-size: 3vw;
 		text-indent: 5%;
     }
 
     main {
-        height: 75%;
+        height: 100%;
     }
 
     .map-wrapper {
         width: 90%;
+        height: 100%;
     }
 
     .modal {
@@ -260,7 +284,7 @@ footer {
         align-self: end;
         position: absolute;
         border-radius: 10px;
-        color: var(--HeaderBG);
+        color: var(--WhiteBG);
         z-index: 1;
     }
 
@@ -273,16 +297,17 @@ footer {
         height: 1.3em;
     }
 
-    #name { background-image: url(./svg/white-icons/name.svg); }
-    #diameter { background-image: url(./svg/white-icons/diameter.svg); }
-    #close-a-date { background-image: url(./svg/white-icons/close-a-date.svg); }
-    #velocity { background-image: url(./svg/white-icons/velocity.svg); }
-    #velocity { background-image: url(./svg/white-icons/velocity.svg); }
-    #hazardous { background-image: url(./svg/white-icons/hazardous.svg); }
+    #name { background-image: url(./../resources/svg/white-icons/name.svg); }
+    #diameter { background-image: url(./../resources/svg/white-icons/diameter.svg); }
+    #close-a-date { background-image: url(./../resources/svg/white-icons/close-a-date.svg); }
+    #velocity { background-image: url(./../resources/svg/white-icons/velocity.svg); }
+    #velocity { background-image: url(./../resources/svg/white-icons/velocity.svg); }
+    #hazardous { background-image: url(./../resources/svg/white-icons/hazardous.svg); }
 
     .info-block {
         display: flex;
         margin: 0 0 1% 1%;
+        align-items: center;
     }
 
     .info-block h2 {
@@ -299,7 +324,7 @@ footer {
         flex-flow: row nowrap;
         flex: 1 0 auto;
         height: 5%;
-        background: var(--HeaderBG);
+        background: var(--WhiteBG);
         padding: 1% 0 0 5%;
         align-items: center;
         color: var(--SvgColor);
@@ -309,7 +334,12 @@ footer {
     .calendar {
         width: 1.3em;
         height: 1.3em;
-        background: center / contain no-repeat url(./svg/calendar.svg);
+        background: center / contain no-repeat url(./../resources/svg/calendar.svg);
         margin: 0 5% 0 3%;
+    }
+
+    .margin-wrapper {
+        margin: 3%;
+        transform: none;
     }
 }

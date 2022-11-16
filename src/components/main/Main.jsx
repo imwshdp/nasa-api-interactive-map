@@ -6,7 +6,9 @@ const Main = ({infoList, refProp, selected, asteroidInfo, sourceRef}) => {
 
     return (
         <main>
-            <h1>NEAR - EARTH ASTEROIDS</h1>
+            <div className='title'>
+                <h1>NEAR - EARTH ASTEROIDS</h1>
+            </div>
             <div className="astro-section">
                 <MapWrapper
                     refProp={refProp}

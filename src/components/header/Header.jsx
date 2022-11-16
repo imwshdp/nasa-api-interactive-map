@@ -3,7 +3,7 @@ import React from 'react';
 const Header = () => {
     return (
         <header>
-            HEADER COMPONENT HERE
+            <div className='nasa-logo'></div>
         </header>
     );
 }

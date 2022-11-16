@@ -1,35 +1,35 @@
 .Btn {
-    height: 10%;
-    background: var(--SourceBG);
-    position: relative;
-    padding: 1%;
-    color: var(--SvgColor);
-    border: 1px solid var(--SvgColor);
-    border-radius: 15px;
-    cursor: pointer;
-    font-family: var(--MainFont);
-    font-size: 1em;
-    font-weight: 600;
+  height: 10%;
+  background: var(--SourceBG);
+  position: relative;
+  padding: 1%;
+  color: var(--SvgColor);
+  border: 1px solid var(--SvgColor);
+  border-radius: 15px;
+  cursor: pointer;
 }
 
 .Btn span {
-    position: relative;
-    z-index: 1;
+  position: relative;
+  z-index: 1;
+  font-family: var(--MainFont);
+  font-size: 1vw;
+  font-weight: 600;
 }
 
 .Btn:before {
-    content: "";
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background-color: #fff;
-    opacity: 0.1;
-    clip-path: circle(0 at center);
-    transition: 1s ease-out;
-  }
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #fff;
+  opacity: 0.1;
+  clip-path: circle(0 at top center);
+  transition: 1s ease-out;
+}
 
-  .Btn:hover:before {
-    clip-path: circle(1000px at center);
-  }
+.Btn:hover:before {
+  clip-path: circle(1000px at center);
+}
