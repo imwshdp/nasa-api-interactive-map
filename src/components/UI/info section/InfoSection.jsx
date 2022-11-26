@@ -4,7 +4,7 @@ import InfoBlock from '../../info block/InfoBlock';
 const InfoSection = ({asteroidInfo, sourceRef}) => {
 
     function round(number) {
-        return Number(number).toFixed(5);
+        return Number(number).toFixed(2);
     }
 
     return (
@@ -48,7 +48,7 @@ const InfoSection = ({asteroidInfo, sourceRef}) => {
                 :
 
                     <section className="asteroid-info">
-                        <p style={{textAlign: 'center'}}>Ckick on asteroid to get information from NASA API</p>
+                        <p style={{textAlign: 'center'}}>Click on asteroid to get information from NASA API</p>
                     </section>
                 }
 

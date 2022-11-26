@@ -7,6 +7,7 @@ import GetService from './API/GetService';
 import { positioning } from './utils/positioning';
 import Footer from './components/footer/Footer';
 import Navbar from './components/navbar/Navbar';
+import Loader from './components/loader/Loader';
 
 export default function App() {
 
@@ -14,9 +15,9 @@ export default function App() {
     const [infoList, setInfoList] = useState([])
 
     // ограничение на максимальное количество показываемых астероидов
-    const [MaxAsteroidsNumber, setMaxAsteroidsNumber] = useState(10)
+    const MaxAsteroidsNumber = 10
 
-    // получение данных 
+    // получение данных
     const [fetchInfo, fetchError] = useFetching( async () => {
     
         let response = await GetService.getInfo(setSourceRef, setUpdateDate);
@@ -50,8 +51,9 @@ export default function App() {
 
     // наблюдатель за изменением состояния полученных данных
     useEffect( () => {
-        //console.log(marginWrapper.current.children)
-        positioning(marginWrapper, MaxAsteroidsNumber)
+        if(infoList.length) {
+            positioning(marginWrapper, MaxAsteroidsNumber)
+        }
     }, [infoList])
 
     // состояние выбранного астероида для вывода информации о нём
@@ -64,13 +66,20 @@ export default function App() {
         <>
             <Header />
             <Navbar sourceRef={sourceRef} />
-            <Main
-                refProp={marginWrapper}
-                infoList={infoList}
-                selected = {setSelectedAsteroid}
-                asteroidInfo={selectedAsteroid}
-                sourceRef={sourceRef}
-            />
+            { sourceRef && updateDate
+            ?
+                <>
+                    <Main
+                        refProp={marginWrapper}
+                        infoList={infoList}
+                        selected = {setSelectedAsteroid}
+                        asteroidInfo={selectedAsteroid}
+                        sourceRef={sourceRef}
+                    />
+                </>
+            :
+                <Loader />
+            }
             <Footer date={updateDate} />
         </>
     );

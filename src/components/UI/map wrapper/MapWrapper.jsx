@@ -4,7 +4,7 @@ import MiniInfoBlock from '../../min info block/MinInfoBlock';
 const MapWrapper = ({infoList, refProp, selected, asteroidInfo}) => {
 
     function round(number) {
-        return Number(number).toFixed(5);
+        return Number(number).toFixed(2);
     }
 
     return (
