@@ -1,10 +1,10 @@
 import React from "react";
-import classes from "./Loader.module.css"
+import css from "./Loader.module.scss"
 
 const Loader = () => {
     return (
-        <div className={classes.Wrapper}>
-            <div className={classes.loader} />
+        <div className={css.Wrapper}>
+            <div className={css.loader} />
         </div>
     );
 };

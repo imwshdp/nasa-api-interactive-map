@@ -1,0 +1,34 @@
+.Btn {
+  height: 10%;
+  background: var(--SpaceBG);
+  position: relative;
+  padding: 1%;
+  border: 1px solid var(--SvgColor);
+  border-radius: 15px;
+  box-shadow: var(--Shadow);
+  cursor: pointer;
+}
+
+.Btn span {
+  position: relative;
+  z-index: 1;
+  font: var(--Font);
+  color: var(--WhiteBG);
+}
+
+.Btn:before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #fff;
+  opacity: 0.1;
+  clip-path: circle(0 at top center);
+  transition: 1s ease-out;
+}
+
+.Btn:hover:before {
+  clip-path: circle(1000px at center);
+}

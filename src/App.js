@@ -1,13 +1,15 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { useFetching } from './hooks/useFetching';
-import Header from './components/header/Header';
-import Main from './components/main/Main';
-import './styles/App.css';
-import GetService from './API/GetService';
-import { positioning } from './utils/positioning';
-import Footer from './components/footer/Footer';
-import Navbar from './components/navbar/Navbar';
-import Loader from './components/loader/Loader';
+import useFetching from 'hooks/useFetching';
+
+import 'styles/App.scss';
+import GetService from 'API/GetService';
+import positioning from 'utils/positioning';
+
+import Header from 'components/header/Header';
+import Loader from 'components/loader/Loader';
+import Navbar from 'components/navbar/Navbar';
+import Main from 'components/main/Main';
+import Footer from 'components/footer/Footer';
 
 export default function App() {
 
@@ -18,28 +20,28 @@ export default function App() {
     const MaxAsteroidsNumber = 10
 
     // получение данных
-    const [fetchInfo, fetchError] = useFetching( async () => {
-    
+    const [fetchInfo, fetchError] = useFetching(async () => {
+
         let response = await GetService.getInfo(setSourceRef, setUpdateDate);
         let slicedArray = [], finalArray = []
-        
+
         // слайс необходимого количества элементов
-        if(response.length > MaxAsteroidsNumber) {
+        if (response.length > MaxAsteroidsNumber) {
             slicedArray = response.slice(0, MaxAsteroidsNumber)
         } else {
             slicedArray = (response.length % 2 === 0)
                 ? [...response]
-                : response.slice(0, response.length-1)
+                : response.slice(0, response.length - 1)
         }
 
         // формирование двумерного массива
-        for(let i = 0; i < slicedArray.length; i+=2) {
-            finalArray = [...finalArray, slicedArray.slice(i, i+2)]
+        for (let i = 0; i < slicedArray.length; i += 2) {
+            finalArray = [...finalArray, slicedArray.slice(i, i + 2)]
         }
         setInfoList([...finalArray])
     })
 
-    useEffect( () => {
+    useEffect(() => {
         fetchInfo()
     }, [])
 
@@ -50,8 +52,8 @@ export default function App() {
     const [sourceRef, setSourceRef] = useState(null)
 
     // наблюдатель за изменением состояния полученных данных
-    useEffect( () => {
-        if(infoList.length) {
+    useEffect(() => {
+        if (infoList.length) {
             positioning(marginWrapper, MaxAsteroidsNumber)
         }
     }, [infoList])
@@ -66,18 +68,18 @@ export default function App() {
         <>
             <Header />
             <Navbar sourceRef={sourceRef} />
-            { sourceRef && updateDate
-            ?
+            {sourceRef && updateDate
+                ?
                 <>
                     <Main
                         refProp={marginWrapper}
                         infoList={infoList}
-                        selected = {setSelectedAsteroid}
+                        selected={setSelectedAsteroid}
                         asteroidInfo={selectedAsteroid}
                         sourceRef={sourceRef}
                     />
                 </>
-            :
+                :
                 <Loader />
             }
             <Footer date={updateDate} />

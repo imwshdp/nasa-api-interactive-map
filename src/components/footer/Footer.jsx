@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Footer = ({date}) => {
+const Footer = ({ date }) => {
     return (
         <footer>
             <div className="calendar"></div>

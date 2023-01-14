@@ -1,0 +1,371 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+a {
+    text-decoration: none;
+    color: var(--SvgColor)
+}
+
+:root {
+    --Font: 500 12px/15px 'Montserrat', sans-serif;
+    --DarkMain: #333333;
+    --Shadow: 0 2px 20px rgba(#CCCCCC, 0.4);
+	--SvgColor: rgba(102, 102, 102, 0.3);
+    --GrayColor: #666666;
+	--WhiteBG: #FFFFFF;
+	--MainBG: 	#f0f0f0;
+	--LightGrayBG: 	#D9D9D9;
+    --SpaceBG: linear-gradient(203.53deg, rgb(41, 39, 39) 9.19%, #2E202E 85.54%);
+    --SpaceTrBG: linear-gradient(203.53deg, rgba(41, 39, 39, 0.3) 5%, #2E202E 85.54%);
+}
+
+html, body {
+    height: 100%;
+    width: 100%;
+    min-height: 640px;
+
+    display: flex;
+    flex-flow: column nowrap;
+}
+
+#root {
+    display: flex;
+    flex-flow: column nowrap;
+    width: 100%;
+    height: 100%;
+    background: var(--WhiteBG);
+    font: var(--Font);
+}
+
+header {
+    display: flex;
+    width: 100%;
+    height: 10%;
+    justify-content: center;
+    background: var(--WhiteBG);
+    box-shadow: var(--Shadow);
+
+    .nasa-logo {
+        width: 20%;
+        height: auto;
+        background: center / contain no-repeat url(/resources/svg/nasa-logo.svg);
+    }
+}
+
+main {
+    display: flex;
+    flex-flow: column nowrap;
+    width: 100%;
+    height: 90%;
+    background: var(--MainBG);
+
+    @media (max-width: 800px) {
+        height: 100%;
+    }
+}
+
+.title {
+    display: flex;
+    flex-flow: row nowrap;
+    width: 95%;
+    height: 5%;
+    margin-left: calc(5% / 2);
+    align-items: flex-end;
+
+    @media (max-width: 800px) {
+        width: 90%;
+        height: 8%;
+        justify-content: center;
+        align-items: center;
+    }
+
+    h1 {
+        text-indent: 5%;
+        white-space: nowrap;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        
+        font: 600 16px/20px Montserrat, sans-serif;
+        color: var(--DarkMain);
+        
+        @media (max-width: 800px) {
+            text-indent: 5%;
+        }
+    }
+}
+
+.astro-section {
+    display: flex;
+    flex-flow: row nowrap;
+    flex: 1 0 auto;
+    width: 100%;
+    height: 90%;
+    justify-content: space-around;
+    align-items: center;
+
+    @media (max-width: 800px) {
+        flex: none;
+    }
+}
+
+.map-wrapper {
+    display: flex;
+    width: 50%;
+    height: 90%;
+    background-image: var(--SpaceTrBG), url(/resources/pictures/starsBG.png);
+    align-self: center;
+    position: relative;
+    border: 1px solid var(--SvgColor);
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: var(--Shadow);
+    
+    @media (max-width: 800px) {
+        width: 90%;
+        height: 100%;
+    }
+}
+
+.earth {
+    min-width: 100px;
+    height: 100px;
+    background: url(/resources/svg/earth.svg);
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+.arc {
+    background: transparent;
+    width: 200px;
+    height: 200px;
+    border: 1px solid white;
+    border-radius: 50%;
+    top: -50px;
+    left: -50px;
+}
+
+.asteroid {
+    display: flex;
+    width: 3rem;
+    height: 3rem;
+    background: center / contain no-repeat;
+    background-image: url(/resources/svg/asteroid.svg);
+    position: absolute;
+    rotate: 90deg;
+    border: none;
+    z-index: 1;
+    cursor: pointer;
+    transition: 1s;
+
+    &:hover {
+        transform: scale(1.2);
+    }
+}
+
+.margin-wrapper {
+    height: auto; 
+    width: 100%;
+    margin: 10%;
+    position: relative;
+    transform: scale(1.15);
+
+    @media (max-width: 800px) {
+        margin: 3%;
+        transform: none;
+    }
+
+    * {
+        position: absolute;
+    }
+}
+
+.info-section {
+    display: flex;
+    flex-flow: column nowrap;
+    width: 40%;
+    height: 90%;
+    justify-content: space-between;
+    border: var(--SvgColor);
+
+    @media (max-width: 800px) {
+        display: none;
+    }
+}
+
+.asteroid-info {
+    width: 100%;
+    height: 85%;
+    background: var(--WhiteBG);
+    padding: 5%;
+    border: 1px solid var(--SvgColor);
+    border-radius: 15px;
+    
+    overflow: scroll;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    line-height: 1.5;
+    box-shadow: var(--Shadow);
+}
+
+.asteroid-info::-webkit-scrollbar {
+    display: none;
+}
+
+.info-block {
+    width: 100%;
+    margin-bottom: 5%;
+
+    @media (max-width: 800px) {
+        display: flex;
+        margin: 0 0 1% 1%;
+        align-items: center;
+
+        h2 {
+            margin-right: 1%;
+            font-size: small;
+        }
+    }
+}
+
+.title-block {
+    display: flex;
+    flex-flow: row wrap;
+    width: 100%;
+    margin-bottom: 3%;
+    align-items: center;
+    color: #292929;
+}
+
+.name-icon {
+    margin-right: 5%;
+    width: 2rem;
+    height: 2rem;
+    background: center / contain no-repeat;
+
+    @media (max-width: 800px) {
+        width: 1.3em;
+        height: 1.3em;
+    }
+}
+
+#name {
+    background-image: url(/resources/svg/black-icons/name.svg);
+}
+#diameter {
+    background-image: url(/resources/svg/black-icons/diameter.svg);
+}
+#close-a-date {
+    background-image: url(/resources/svg/black-icons/close-a-date.svg);
+}
+#velocity {
+    background-image: url(/resources/svg/black-icons/velocity.svg);
+}
+#velocity {
+    background-image: url(/resources/svg/black-icons/velocity.svg);
+}
+#hazardous {
+    background-image: url(/resources/svg/black-icons/hazardous.svg);
+}
+
+nav {
+    display: none;
+
+    @media (max-width: 800px) {
+        display: flex;
+        width: 100%;
+        max-height: 80px;
+        align-self: center;
+        justify-content: center;
+        align-items: center;
+        padding: 3%;
+        background: var(--MainBG);
+    }
+}
+
+footer {
+    display: none;
+
+    @media (max-width: 800px) {
+        display: flex;
+        flex-flow: row nowrap;
+        height: 10%;
+        background: var(--WhiteBG);
+        padding: 1% 0 0 5%;
+        align-items: center;
+        color: var(--GrayColor);
+        font-size: larger;
+        font-weight: 600;
+    }
+}
+
+.modal {
+    display: none;
+
+    @media (max-width: 800px) {
+        display: flex;
+        flex-flow: column nowrap;
+        width: 95%;
+        background: rgba(255,255,255,0.3);
+        left: 2.5%;
+        bottom: 2%;
+        padding: 3%;
+        align-self: end;
+        position: absolute;
+        border-radius: 10px;
+        color: var(--WhiteBG);
+        z-index: 1;
+    }
+}
+
+@media (max-width: 800px) {
+
+    .NavButton {
+        display: flex;
+        width: 25%;
+        height: 50px;
+        background: var(--SpaceBG);
+        justify-content: center;
+        align-items: center;
+        border: 1px solid var(--SvgColor);
+        border-radius: 15px;
+        cursor: pointer;
+
+        * {
+            color: var(--LightGrayBG);
+            font: var(--Font);
+        }
+
+        &:first-child {
+            margin-right: 5%;
+        }
+    }
+
+    #name {
+        background-image: url(/resources/svg/white-icons/name.svg);
+    }
+    #diameter {
+        background-image: url(/resources/svg/white-icons/diameter.svg);
+    }
+    #close-a-date {
+        background-image: url(/resources/svg/white-icons/close-a-date.svg);
+    }
+    #velocity {
+        background-image: url(/resources/svg/white-icons/velocity.svg);
+    }
+    #velocity {
+        background-image: url(/resources/svg/white-icons/velocity.svg);
+    }
+    #hazardous {
+        background-image: url(/resources/svg/white-icons/hazardous.svg);
+    }
+
+    .calendar {
+        width: 1.3em;
+        height: 1.3em;
+        background: center / contain no-repeat url(/resources/svg/calendar.svg);
+        margin: 0 5% 0 3%;
+    }
+}

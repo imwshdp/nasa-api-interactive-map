@@ -1,9 +1,8 @@
 import React from 'react';
-import InfoSection from '../UI/info section/InfoSection';
-import MapWrapper from '../UI/map wrapper/MapWrapper';
+import InfoSection from 'components/UI/infoSection/InfoSection';
+import MapWrapper from 'components/UI/mapWrapper/MapWrapper';
 
-const Main = ({infoList, refProp, selected, asteroidInfo, sourceRef}) => {
-
+const Main = ({ infoList, refProp, selected, asteroidInfo, sourceRef }) => {
     return (
         <main>
             <div className='title'>
@@ -23,6 +22,6 @@ const Main = ({infoList, refProp, selected, asteroidInfo, sourceRef}) => {
             </div>
         </main>
     );
- }
- 
- export default Main;
+}
+
+export default Main;
