@@ -39,7 +39,7 @@ const MapWrapper = ({ infoList, refProp, selected, asteroidInfo }) => {
                         <p>{round(asteroidInfo.estimated_diameter.kilometers.estimated_diameter_min)} - {round(asteroidInfo.estimated_diameter.kilometers.estimated_diameter_max)} Kilometers</p>
                     </MiniInfoBlock>
 
-                    <MiniInfoBlock id="close-a-date" textTitle="CLOSE APPROACH DATE:">
+                    <MiniInfoBlock id="close-a-date" textTitle="APPROACH DATE:">
                         <p>{stringifyDate(asteroidInfo)}</p>
                     </MiniInfoBlock>
 

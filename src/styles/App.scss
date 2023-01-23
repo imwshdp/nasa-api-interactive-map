@@ -202,12 +202,14 @@ main {
     padding: 5%;
     border: 1px solid var(--SvgColor);
     border-radius: 15px;
-    
+
+    font-size: larger;
+    line-height: 1.5;
+    box-shadow: var(--Shadow);
+
     overflow: scroll;
     -ms-overflow-style: none;
     scrollbar-width: none;
-    line-height: 1.5;
-    box-shadow: var(--Shadow);
 }
 
 .asteroid-info::-webkit-scrollbar {
