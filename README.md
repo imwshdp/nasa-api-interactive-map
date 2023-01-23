@@ -1,4 +1,4 @@
-# React TypeScript App
+# React NASA API Data Parcing App
 
 React application with interactive map of nearest to Earth asteroids.
 Data parsed from [NASA Open APIs](https://api.nasa.gov/) website using Asteroids NeoWs API.
