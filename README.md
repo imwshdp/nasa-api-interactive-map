@@ -11,7 +11,7 @@ The application includes:
 * Controlled React components
 * CSS pre-processor
 
-Hosted review version of app is available [here](https://react-js-nasa-api-data-parcing.vercel.app/).
+Hosted review version of app is available [here](https://nasa-api-interactive-map.vercel.app/).
 
 ## Stack
 
